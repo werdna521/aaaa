@@ -11,6 +11,7 @@ import AppLoading from 'expo-app-loading'
 import HomePage from './screens'
 import { FC } from 'react'
 
+// TODO: add design system
 const App: FC = () => {
   const [fontsLoaded] = useFonts({
     'inter-medium': Inter_500Medium,
