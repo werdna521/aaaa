@@ -3,11 +3,13 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import MetricDetails from './metric-details'
 import WeatherChip from './weather-chip'
+import { getCurrentWeatherIndex } from './helpers'
 import { useWeathersContext } from '../../../contexts/weathers'
 
 const MainWeather: FC = () => {
   const { weathers, loading, error } = useWeathersContext()
-  const weather = weathers?.[0]
+  const currentWeatherIndex = getCurrentWeatherIndex()
+  const weather = weathers?.[currentWeatherIndex]
 
   if (error) {
     return null

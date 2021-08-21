@@ -1,22 +1,18 @@
 import React, { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 
+import { Weather } from '../types'
 import ForecastItem from './forecast-item'
-import { useWeathersContext } from '../../../contexts/weathers'
 
-const Today: FC = () => {
-  const { weathers, loading, error } = useWeathersContext()
+type Props = {
+  weathers: Weather[]
+  title: string
+  style?: StyleProp<ViewStyle>
+}
 
-  if (error) {
-    return null
-  }
-
-  if (loading) {
-    return null
-  }
-
+const ForecastDay: FC<Props> = ({ weathers, title, style }) => {
   const renderWeatherForecasts = () => {
-    return weathers?.slice(0, 4)?.map((weather, index) => {
+    return weathers?.map((weather, index) => {
       const isFirstElement = index === 0
       const style = !isFirstElement ? styles.forecastSpacing : {}
 
@@ -31,17 +27,14 @@ const Today: FC = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Today</Text>
+    <View style={style}>
+      <Text style={styles.title}>{title}</Text>
       <View style={styles.forecastContainer}>{renderWeatherForecasts()}</View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 64,
-  },
   title: {
     color: '#5e7382',
     fontFamily: 'inter-medium',
@@ -55,4 +48,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Today
+export default ForecastDay

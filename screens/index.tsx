@@ -3,8 +3,8 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 
 import MainWeather from '../components/home/main-weather'
 import Moon from '../components/home/moon'
-import Today from '../components/home/today'
 import { WeathersProvider } from '../contexts/weathers'
+import Forecast from '../components/home/forecast'
 
 const HomeScreen: FC = () => {
   return (
@@ -12,7 +12,7 @@ const HomeScreen: FC = () => {
       <View style={styles.container}>
         <WeathersProvider>
           <MainWeather />
-          <Today />
+          <Forecast />
         </WeathersProvider>
       </View>
       <Moon style={styles.moon} />
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#081b25',
   },
   container: {
-    paddingTop: 48,
+    paddingVertical: 48,
     paddingHorizontal: 16,
   },
   moon: {
