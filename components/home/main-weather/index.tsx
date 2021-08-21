@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import MetricDetails from './metric-details'
-import Chip from '../../common/chip'
 import useWeather from '../../hooks/use-weather'
+import WeatherChip from './weather-chip'
 
 const MainWeather: FC = () => {
   const { weather, loading, error } = useWeather()
@@ -24,7 +24,7 @@ const MainWeather: FC = () => {
           <Text style={styles.temperatureText}>{weather?.tempC}</Text>
           <Text style={styles.degreeText}>〇</Text>
         </View>
-        <Chip text={weather?.cuaca} />
+        <WeatherChip text={weather?.cuaca} weatherCode={weather?.kodeCuaca} />
         <MetricDetails weather={weather} />
       </View>
     </View>

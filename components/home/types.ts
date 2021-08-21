@@ -4,4 +4,5 @@ export type Weather = {
   jamCuaca: string
   tempC: string
   tempF: string
+  kodeCuaca: string
 }
