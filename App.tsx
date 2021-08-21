@@ -1,5 +1,4 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, { FC } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import {
   useFonts,
@@ -9,9 +8,13 @@ import {
   Inter_900Black,
 } from '@expo-google-fonts/inter'
 import AppLoading from 'expo-app-loading'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import HomePage from './screens'
-import { FC } from 'react'
+import { SCREENS } from './constants/screens'
+import HomeScreen from './screens'
+
+const Stack = createNativeStackNavigator()
 
 // TODO: add design system
 const App: FC = () => {
@@ -27,20 +30,13 @@ const App: FC = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <HomePage />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
+      </Stack.Navigator>
       <StatusBar style="light" />
-    </View>
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#081b25',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 export default App

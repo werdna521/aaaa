@@ -6,7 +6,7 @@ import Moon from '../components/home/moon'
 import Today from '../components/home/today'
 import { WeathersProvider } from '../contexts/weathers'
 
-const HomePage: FC = () => {
+const HomeScreen: FC = () => {
   return (
     <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     width: '100%',
+    backgroundColor: '#081b25',
   },
   container: {
     paddingTop: 48,
@@ -36,4 +37,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default HomePage
+export default HomeScreen
