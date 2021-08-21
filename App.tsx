@@ -12,7 +12,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { SCREENS } from './constants/screens'
-import HomeScreen from './screens'
+import HomeScreen from './screens/home'
+import ChangeLocationScreen from './screens/change-location'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,6 +34,10 @@ const App: FC = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
+        <Stack.Screen
+          name={SCREENS.CHANGE_LOCATION}
+          component={ChangeLocationScreen}
+        />
       </Stack.Navigator>
       <StatusBar style="light" />
     </NavigationContainer>
