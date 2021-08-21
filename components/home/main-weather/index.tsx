@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import MetricDetails from './metric-details'
-import useWeathers from '../../hooks/use-weathers'
 import WeatherChip from './weather-chip'
+import { useWeathersContext } from '../../../contexts/weathers'
 
 const MainWeather: FC = () => {
-  const { weathers, loading, error } = useWeathers()
+  const { weathers, loading, error } = useWeathersContext()
   const weather = weathers?.[0]
 
   if (error) {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { Weather } from '../home/types'
-import { getWeatherById } from '../../services'
+import { Weather } from '../components/home/types'
+import { getWeatherById } from '../services'
 
 type Returns = {
   weathers: Weather[]

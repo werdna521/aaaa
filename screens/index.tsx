@@ -4,13 +4,16 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 import MainWeather from '../components/home/main-weather'
 import Moon from '../components/home/moon'
 import Today from '../components/home/today'
+import { WeathersProvider } from '../contexts/weathers'
 
 const HomePage: FC = () => {
   return (
     <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <MainWeather />
-        <Today />
+        <WeathersProvider>
+          <MainWeather />
+          <Today />
+        </WeathersProvider>
       </View>
       <Moon style={styles.moon} />
     </ScrollView>

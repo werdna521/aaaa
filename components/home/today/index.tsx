@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-import useWeathers from '../../hooks/use-weathers'
 import ForecastItem from './forecast-item'
+import { useWeathersContext } from '../../../contexts/weathers'
 
 const Today: FC = () => {
-  const { weathers, loading, error } = useWeathers()
+  const { weathers, loading, error } = useWeathersContext()
 
   if (error) {
     return null
