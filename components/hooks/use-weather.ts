@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import { Weather } from '../home/types'
+import { getWeatherById } from '../../services'
 
 type Returns = {
   weather: Weather
@@ -15,14 +15,11 @@ const useWeather = (): Returns => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios
-      .get('https://ibnux.github.io/BMKG-importer/cuaca/501580.json')
-      .then(async ({ data }) => {
+    getWeatherById('501580')
+      .then((data) => {
         setWeather(data?.[0])
       })
-      .catch((err) => {
-        setError(err)
-      })
+      .catch(setError)
       .finally(() => {
         setLoading(false)
       })
