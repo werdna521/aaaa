@@ -4,20 +4,20 @@ import { Weather } from '../home/types'
 import { getWeatherById } from '../../services'
 
 type Returns = {
-  weather: Weather
+  weathers: Weather[]
   loading: boolean
   error
 }
 
-const useWeather = (): Returns => {
-  const [weather, setWeather] = useState<Weather>(null)
+const useWeathers = (): Returns => {
+  const [weathers, setWeather] = useState<Weather[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     getWeatherById('501580')
       .then((data) => {
-        setWeather(data?.[0])
+        setWeather(data)
       })
       .catch(setError)
       .finally(() => {
@@ -26,10 +26,10 @@ const useWeather = (): Returns => {
   }, [])
 
   return {
-    weather,
+    weathers,
     loading,
     error,
   }
 }
 
-export default useWeather
+export default useWeathers

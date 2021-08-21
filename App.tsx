@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import {
   useFonts,
+  Inter_400Regular,
   Inter_500Medium,
   Inter_700Bold,
   Inter_900Black,
@@ -15,6 +16,7 @@ import { FC } from 'react'
 // TODO: add design system
 const App: FC = () => {
   const [fontsLoaded] = useFonts({
+    inter: Inter_400Regular,
     'inter-medium': Inter_500Medium,
     'inter-bold': Inter_700Bold,
     'inter-black': Inter_900Black,

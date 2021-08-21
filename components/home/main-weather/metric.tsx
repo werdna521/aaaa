@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     color: '#e8eaea',
     marginLeft: 8,
     fontSize: 16,
+    fontFamily: 'inter',
   },
 })
 
