@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   label: {
-    color: 'white',
+    color: '#f9faf5',
     fontFamily: 'inter-medium',
     fontSize: 16,
   },

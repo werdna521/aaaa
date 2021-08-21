@@ -5,6 +5,7 @@ import {
   useFonts,
   Inter_500Medium,
   Inter_700Bold,
+  Inter_900Black,
 } from '@expo-google-fonts/inter'
 import AppLoading from 'expo-app-loading'
 
@@ -16,6 +17,7 @@ const App: FC = () => {
   const [fontsLoaded] = useFonts({
     'inter-medium': Inter_500Medium,
     'inter-bold': Inter_700Bold,
+    'inter-black': Inter_900Black,
   })
 
   if (!fontsLoaded) {

@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    paddingTop: 64,
+    paddingTop: 48,
     paddingHorizontal: 16,
   },
   moon: {
     position: 'absolute',
     top: -125,
-    left: -150,
+    right: -200,
   },
 })
 
