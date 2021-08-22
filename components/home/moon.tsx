@@ -1,16 +1,25 @@
 import React, { FC } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native'
+import { generateRandomNumber } from '../../utils'
 
 type Props = {
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
+  isMini?: boolean
+  isRandom?: boolean
 }
 
-const Moon: FC<Props> = ({ style }) => {
+const Moon: FC<Props> = ({ style, isMini, isRandom }) => {
+  const moonStyle = isMini ? styles.miniMoon : styles.moon
+  const rotateDegree = isRandom ? generateRandomNumber(360) : -45
+  const transformStyle = {
+    transform: [{ rotateZ: `${rotateDegree}deg` }],
+  }
+
   return (
     <LinearGradient
       colors={['#30aafd', '#c565f9']}
-      style={[styles.moon, style]}
+      style={[moonStyle, transformStyle, style]}
     />
   )
 }
@@ -20,7 +29,11 @@ const styles = StyleSheet.create({
     width: 350,
     height: 350,
     borderRadius: 175,
-    transform: [{ rotateZ: '-45deg' }],
+  },
+  miniMoon: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
   },
 })
 

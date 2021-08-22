@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import MetricDetails from './metric-details'
 import WeatherChip from './weather-chip'
-import { getCurrentWeatherIndex } from './helpers'
+import { getCurrentWeatherIndex } from '../../../utils'
 import { useWeathersContext } from '../../../contexts/weathers'
 
 const MainWeather: FC = () => {

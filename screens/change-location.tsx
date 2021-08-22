@@ -1,15 +1,16 @@
 import React, { FC } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import Header from '../components/common/header'
+import SearchInput from '../components/change-location/search-input'
 
 const ChangeLocationScreen: FC = () => {
   return (
     <View style={styles.container}>
-      <ScrollView
-        style={styles.scrollView}
-        showsVerticalScrollIndicator={false}
-      >
-        <Text>Change Location</Text>
-      </ScrollView>
+      <View style={styles.innerContainer}>
+        <Header title="Change Location" />
+        <SearchInput />
+      </View>
     </View>
   )
 }
@@ -19,8 +20,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#081b25',
   },
-  scrollView: {
-    flex: 1,
+  innerContainer: {
+    paddingTop: 48,
+    paddingBottom: 64,
+    paddingHorizontal: 16,
   },
 })
 

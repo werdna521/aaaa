@@ -1,4 +1,4 @@
-export const getCurrentWeatherIndex = () => {
+export const getCurrentWeatherIndex = (): number => {
   const now = new Date()
   const hour = now.getHours()
 
