@@ -9,13 +9,13 @@ type Returns = {
   error
 }
 
-const useWeathers = (id = '501580'): Returns => {
+const useWeathers = (weatherId = '501580'): Returns => {
   const [weathers, setWeather] = useState<Weather[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    getWeatherById(id)
+    getWeatherById(weatherId)
       .then((data) => {
         setWeather(data)
       })
@@ -23,7 +23,7 @@ const useWeathers = (id = '501580'): Returns => {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+  }, [weatherId])
 
   return {
     weathers,

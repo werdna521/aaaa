@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import { Area } from './types'
 import Moon from '../home/moon'
 import useWeathers from '../../hooks/use-weathers'
 import { getCurrentWeatherIndex } from '../../utils'
+import { setLocationId } from '../../lib/async-storage'
 
 type Props = {
   area: Area
@@ -12,6 +14,7 @@ type Props = {
 
 const LocationCard: FC<Props> = ({ area }) => {
   const { weathers, loading, error } = useWeathers(area?.id)
+  const navigation = useNavigation()
   const weather = weathers?.[getCurrentWeatherIndex()]
 
   if (error) {
@@ -22,15 +25,20 @@ const LocationCard: FC<Props> = ({ area }) => {
     return null
   }
 
+  const handlePress = () => {
+    setLocationId(area?.id)
+    navigation.goBack()
+  }
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handlePress}>
       <View style={styles.headerContainer}>
         <Text style={styles.temperatureText}>{weather?.tempC}°</Text>
         <Moon isMini isRandom />
       </View>
-      <Text style={styles.cityText}>{area.kota}</Text>
-      <Text style={styles.districtText}>{area.kecamatan}</Text>
-    </View>
+      <Text style={styles.cityText}>{area?.kota}</Text>
+      <Text style={styles.districtText}>{area?.kecamatan}</Text>
+    </TouchableOpacity>
   )
 }
 

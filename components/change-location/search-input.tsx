@@ -5,16 +5,18 @@ import LocationCard from './location-card'
 import { Area } from './types'
 import { AREA } from '../../constants/area'
 
-const SearchInput: FC = () => {
+const MAX_NUM_OF_LOCATION = 10
+
+const SearchInput: FC<Props> = () => {
   const [value, setValue] = useState(null)
   const [filteredArea, setFilteredArea] = useState<Area[]>(AREA)
 
   useEffect(() => {
-    // filter areas by city
+    // filter areas by city, 10 at a time
     setFilteredArea(
       AREA.filter(({ kota }) => {
         return kota.toLowerCase().includes(value ?? '')
-      }),
+      }).slice(0, MAX_NUM_OF_LOCATION),
     )
   }, [value])
 

@@ -1,15 +1,20 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import MetricDetails from './metric-details'
 import WeatherChip from './weather-chip'
 import { getCurrentWeatherIndex } from '../../../utils'
 import { useWeathersContext } from '../../../contexts/weathers'
+import { AREA } from '../../../constants/area'
 
 const MainWeather: FC = () => {
-  const { weathers, loading, error } = useWeathersContext()
+  const { weathers, weatherId, loading, error } = useWeathersContext()
   const currentWeatherIndex = getCurrentWeatherIndex()
   const weather = weathers?.[currentWeatherIndex]
+  const city = useMemo(
+    () => AREA.find(({ id }) => id === weatherId)?.kecamatan,
+    [weatherId],
+  )
 
   if (error) {
     return null
@@ -22,7 +27,7 @@ const MainWeather: FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mainInfoContainer}>
-        <Text style={styles.cityText}>Medan</Text>
+        <Text style={styles.cityText}>{city}</Text>
         <View style={styles.temperatureContainer}>
           <Text style={styles.temperatureText}>{weather?.tempC}</Text>
           <Text style={styles.degreeText}>〇</Text>

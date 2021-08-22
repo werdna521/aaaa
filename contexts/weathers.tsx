@@ -1,10 +1,20 @@
-import React, { createContext, useContext, FC } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  FC,
+} from 'react'
+import { useFocusEffect } from '@react-navigation/native'
 
 import { Weather } from '../components/home/types'
 import useWeathers from '../hooks/use-weathers'
+import { getLocationId } from '../lib/async-storage'
 
 type Context = {
   weathers: Weather[]
+  weatherId: string
   loading: boolean
   error
 }
@@ -12,10 +22,17 @@ type Context = {
 const WeathersContext = createContext<Context>(null)
 
 export const WeathersProvider: FC = ({ children }) => {
-  const { weathers, loading, error } = useWeathers()
+  const [weatherId, setWeatherId] = useState('501580')
+  const { weathers, loading, error } = useWeathers(weatherId)
+
+  useFocusEffect(
+    useCallback(() => {
+      getLocationId().then(setWeatherId)
+    }, []),
+  )
 
   return (
-    <WeathersContext.Provider value={{ weathers, loading, error }}>
+    <WeathersContext.Provider value={{ weathers, loading, error, weatherId }}>
       {children}
     </WeathersContext.Provider>
   )
