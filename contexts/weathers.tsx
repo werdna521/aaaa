@@ -27,7 +27,11 @@ export const WeathersProvider: FC = ({ children }) => {
 
   useFocusEffect(
     useCallback(() => {
-      getLocationId().then(setWeatherId)
+      getLocationId()
+        .then(setWeatherId)
+        .catch(() => {
+          setWeatherId('501580')
+        })
     }, []),
   )
 
